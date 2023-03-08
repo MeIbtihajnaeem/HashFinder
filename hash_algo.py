@@ -29,31 +29,33 @@ class HashAlgo():
     def _createHashDocument(self,hashType,fileName):
         outputFileName = hashType.name+".txt"
         hashTypeName = hashType.name+""
-        match hashTypeName:
-            case "MD5":
-                hashLibMethod = hashlib.md5
-            case "SHA1":
-                hashLibMethod = hashlib.sha1
-            case "SHA224":
-                hashLibMethod = hashlib.sha224
-            case "SHA256":
-                hashLibMethod = hashlib.sha256
-            case "SHA384":
-                hashLibMethod = hashlib.sha384
-            case "SHA512":
-                hashLibMethod = hashlib.sha512
-            case "BLAKE2B":
-                hashLibMethod = hashlib.blake2b
-            case "BLAKE2S":
-                hashLibMethod = hashlib.blake2s
-            case "SHA3_224":
-                hashLibMethod = hashlib.sha3_224
-            case "SHA3_256":
-                hashLibMethod = hashlib.sha3_256
-            case "SHA3_384":
-                hashLibMethod = hashlib.sha3_384
-            case "SHA3_512":
-                hashLibMethod = hashlib.sha3_512
+        if hashTypeName == "MD5":
+            hashLibMethod = hashlib.md5
+        elif hashTypeName == "SHA1":
+            hashLibMethod = hashlib.sha1
+        elif hashTypeName == "SHA224":
+            hashLibMethod = hashlib.sha224
+        elif hashTypeName == "SHA256":
+            hashLibMethod = hashlib.sha256
+        elif hashTypeName == "SHA384":
+            hashLibMethod = hashlib.sha384
+        elif hashTypeName == "SHA512":
+            hashLibMethod = hashlib.sha512
+        elif hashTypeName == "BLAKE2B":
+            hashLibMethod = hashlib.blake2b
+        elif hashTypeName == "BLAKE2S":
+            hashLibMethod = hashlib.blake2s
+        elif hashTypeName == "SHA3_224":
+            hashLibMethod = hashlib.sha3_224
+        elif hashTypeName == "SHA3_256":
+            hashLibMethod = hashlib.sha3_256
+        elif hashTypeName == "SHA3_384":
+            hashLibMethod = hashlib.sha3_384
+        elif hashTypeName == "SHA3_512":
+            hashLibMethod = hashlib.sha3_512
+        else:
+            raise ValueError("Invalid hash type name")
+
         with open(fileName, 'r') as f_input, open(outputFileName, 'w') as f_output:
             for line in f_input:
                 line = line.strip().encode('utf-8')
