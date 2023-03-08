@@ -1,4 +1,4 @@
-from hash_algo import HashAlgo
+from HashAlgo import HashAlgo
 
 def start():
     print("""\
